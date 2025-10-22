@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VidiyaSetu Gaming PCs — Built for Victory</title>
+    <meta name="description" content="High-performance custom gaming PCs, components, and ready-to-play rigs. Configure, compare, and buy." />
+    <style>
+        :root{
+            --bg:#0b0f14; --card:#0f1720; --muted:#98a0ab; --accent:#00d4ff; --accent-2:#7c5cff;
+            --glass: rgba(255,255,255,0.04);
+            --radius:12px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color-scheme: dark;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0; background:
+            radial-gradient(800px 400px at 10% 10%, rgba(124,92,255,0.07), transparent 6%),
+            radial-gradient(600px 300px at 90% 90%, rgba(0,212,255,0.03), transparent 6%),
+            linear-gradient(180deg,#061018 0%, #041018 100%); color:#e8eef5;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+            padding:32px;
+        }
+
+        .wrap{max-width:1200px;margin:0 auto}
+
+        header{
+            display:flex; gap:24px; align-items:center; justify-content:space-between;
+            margin-bottom:28px;
+        }
+        .brand{display:flex; gap:14px; align-items:center; text-decoration:none; color:inherit}
+        .logo{
+            width:48px;height:48px;border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; font-weight:700;
+            box-shadow:0 6px 30px rgba(0,0,0,0.6);
+        }
+        nav{display:flex; gap:14px; align-items:center}
+        nav a{color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; font-size:15px}
+        nav a:hover{color:#fff; background:var(--glass)}
+
+        .hero{
+            display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:stretch; margin-bottom:32px;
+        }
+        .hero-card{
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            border-radius:var(--radius); padding:28px; box-shadow:0 8px 30px rgba(0,0,0,0.6);
+        }
+        .headline{font-size:28px;font-weight:700;margin:0 0 8px}
+        .sub{color:var(--muted); margin:0 0 20px}
+        .cta{display:flex; gap:12px; align-items:center}
+        .btn{
+            background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021018; padding:12px 18px; border-radius:10px; font-weight:700; border:none; cursor:pointer;
+        }
+        .mutebtn{background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--muted); padding:10px 14px; border-radius:10px; cursor:pointer}
+
+        .stats{display:flex; gap:12px; margin-top:18px}
+        .stat{background:rgba(255,255,255,0.02); padding:12px 16px; border-radius:10px; font-weight:600}
+
+        .promo{
+            background:linear-gradient(120deg, rgba(124,92,255,0.12), rgba(0,212,255,0.06));
+            padding:20px; border-radius:12px; text-align:center;
+        }
+        .promo img{width:100%; border-radius:8px; display:block; margin-bottom:12px; filter:contrast(1.05) saturate(1.1)}
+
+        /* products */
+        .section{margin-bottom:36px}
+        .section h3{margin:0 0 12px}
+        .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+        .card{background:var(--card); padding:16px; border-radius:12px; display:flex; flex-direction:column; gap:12px;}
+        .pc-thumb{height:140px; border-radius:8px; background-size:cover; background-position:center; box-shadow:inset 0 -20px 40px rgba(0,0,0,0.4)}
+        .card h4{margin:0;font-size:16px}
+        .specs{color:var(--muted); font-size:13px; margin-top:6px; flex:1}
+        .price-row{display:flex; align-items:center; justify-content:space-between; gap:8px}
+        .price{font-weight:800; color:var(--accent)}
+        .smallbtn{background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04); color:var(--muted); padding:8px 10px; border-radius:8px; cursor:pointer}
+
+        /* configurator */
+        .config{display:flex; gap:18px; align-items:stretch; flex-wrap:wrap}
+        .config form{flex:1; min-width:300px; background:rgba(255,255,255,0.02); padding:16px; border-radius:12px}
+        .field{display:flex; align-items:center; gap:12px; margin-bottom:10px}
+        label{width:110px; color:var(--muted); font-size:14px}
+        select,input[type="range"]{flex:1; padding:10px; background:transparent; color:inherit; border:1px solid rgba(255,255,255,0.04); border-radius:8px}
+        .config-summary{width:320px; min-width:260px; background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(255,255,255,0.02)); padding:16px; border-radius:12px}
+        .total{font-size:20px; font-weight:800; color:var(--accent); margin:12px 0}
+
+        footer{display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:14px; margin-top:36px}
+        @media (max-width:900px){
+            .hero{grid-template-columns:1fr; }
+            header{flex-direction:column; align-items:flex-start; gap:12px;}
+            .config{flex-direction:column}
+            .config-summary{width:100%}
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <a class="brand" href="#">
+                <div class="logo" aria-hidden="true">VS</div>
+                <div>
+                    <div style="font-weight:700">VidiyaSetu</div>
+                    <div style="font-size:12px;color:var(--muted)">Gaming PCs & Components</div>
+                </div>
+            </a>
+            <nav aria-label="Main navigation">
+                <a href="#build">Build</a>
+                <a href="#products">Products</a>
+                <a href="#deals">Deals</a>
+                <a href="#support">Support</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-card" role="region" aria-labelledby="hero-title">
+                    <h1 id="hero-title" class="headline">Custom & Ready Gaming PCs — Built for Victory</h1>
+                    <p class="sub">From budget-friendly entry rigs to ultra 4K beasts. Select parts, tune performance, and get expert-tested systems with free shipping.</p>
+                    <div class="cta">
+                        <button class="btn" onclick="document.getElementById('build').scrollIntoView({behavior:'smooth'})">Start Building</button>
+                        <button class="mutebtn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Ready Systems</button>
+                    </div>
+                    <div class="stats" aria-hidden="true">
+                        <div class="stat">RTX 40 Series</div>
+                        <div class="stat">3-Year Warranty</div>
+                        <div class="stat">Free Shipping</div>
+                    </div>
+                    <div style="margin-top:18px; color:var(--muted); font-size:14px">
+                        Featured: "AeroBlade X" — compact mini-ITX with RTX 4070 Ti and Ryzen 7.
+                    </div>
+                </div>
+
+                <aside class="promo" aria-label="Promotion">
+                    <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=0e9beefbde3f0a4d1ac0c8a3c1e1a5d1" alt="Gaming PC promo image">
+                    <div style="font-weight:700">Limited Time: GPU bundles up to 15% off</div>
+                    <div style="color:var(--muted); font-size:13px; margin-top:8px">Bundle selected GPUs with cases and PSUs for additional discounts.</div>
+                    <div style="margin-top:12px;">
+                        <button class="btn" onclick="location.hash='deals'">See Deals</button>
+                    </div>
+                </aside>
+            </section>
+
+            <section id="products" class="section">
+                <h3>Popular Rigs</h3>
+                <div class="grid">
+                    <article class="card" aria-labelledby="p1">
+                        <div class="pc-thumb" style="background-image:url('https://images.unsplash.com/photo-1612460503371-9b6e0e6e1f36?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ec1a0b2b68f7c1c2e9a4b2f7e8a1d3f4')" role="img" aria-label="Aurora R1"></div>
+                        <h4 id="p1">Aurora R1 — 1440p High</h4>
+                        <div class="specs">Ryzen 7 5800X • RTX 3070 • 16GB DDR4 • 1TB NVMe</div>
+                        <div class="price-row">
+                            <div class="price">$1,499</div>
+                            <div>
+                                <button class="smallbtn" onclick="addToCart('Aurora R1',1499)">Add to cart</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card" aria-labelledby="p2">
+                        <div class="pc-thumb" style="background-image:url('https://images.unsplash.com/photo-1610564555895-7f8f5b1b1a4b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6d4b2e1f1b2c3d4e5f6a7b8c9d0e1f2a')" role="img" aria-label="AeroBlade X"></div>
+                        <h4 id="p2">AeroBlade X — Compact Power</h4>
+                        <div class="specs">Intel i7 12700K • RTX 4070 Ti • 32GB DDR5 • 1TB NVMe</div>
+                        <div class="price-row">
+                            <div class="price">$2,199</div>
+                            <div><button class="smallbtn" onclick="addToCart('AeroBlade X',2199)">Add to cart</button></div>
+                        </div>
+                    </article>
+
+                    <article class="card" aria-labelledby="p3">
+                        <div class="pc-thumb" style="background-image:url('https://images.unsplash.com/photo-1605827181435-8f22617b2c0f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abc123def4567890')" role="img" aria-label="Phantom Z"></div>
+                        <h4 id="p3">Phantom Z — Ultimate 4K</h4>
+                        <div class="specs">Ryzen 9 7950X • RTX 4090 • 64GB DDR5 • 2TB NVMe</div>
+                        <div class="price-row">
+                            <div class="price">$4,799</div>
+                            <div><button class="smallbtn" onclick="addToCart('Phantom Z',4799)">Add to cart</button></div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="build" class="section">
+                <h3>Custom Build Configurator</h3>
+                <div class="config">
+                    <form onsubmit="event.preventDefault(); checkout();">
+                        <div class="field">
+                            <label for="cpu">CPU</label>
+                            <select id="cpu" name="cpu" onchange="updatePrice()">
+                                <option value="200">Intel i5-12400 — $200</option>
+                                <option value="350">Intel i7-12700K — $350</option>
+                                <option value="600">Ryzen 9 7900X — $600</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="gpu">GPU</label>
+                            <select id="gpu" name="gpu" onchange="updatePrice()">
+                                <option value="300">RTX 3060 — $300</option>
+                                <option value="700">RTX 4070 Ti — $700</option>
+                                <option value="1600">RTX 4090 — $1,600</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="ram">RAM</label>
+                            <select id="ram" name="ram" onchange="updatePrice()">
+                                <option value="60">16GB DDR4 — $60</option>
+                                <option value="140">32GB DDR5 — $140</option>
+                                <option value="260">64GB DDR5 — $260</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="storage">Storage</label>
+                            <select id="storage" name="storage" onchange="updatePrice()">
+                                <option value="60">1TB NVMe — $60</option>
+                                <option value="120">2TB NVMe — $120</option>
+                                <option value="220">4TB NVMe — $220</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="case">Case</label>
+                            <select id="case" name="case" onchange="updatePrice()">
+                                <option value="80">Compact Case — $80</option>
+                                <option value="140">Mid-Tower — $140</option>
+                                <option value="220">Full Tower RGB — $220</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; gap:10px; margin-top:12px">
+                            <button class="btn" type="submit">Add Build to Cart</button>
+                            <button class="mutebtn" type="button" onclick="resetBuild()">Reset</button>
+                        </div>
+                    </form>
+
+                    <aside class="config-summary" aria-live="polite">
+                        <div style="font-weight:700">Build Summary</div>
+                        <div id="summary-list" style="margin-top:10px; color:var(--muted); font-size:14px">
+                            <!-- JS populates -->
+                        </div>
+                        <div class="total" id="total">$0</div>
+                        <div style="font-size:13px; color:var(--muted)">Estimated shipping and taxes calculated at checkout.</div>
+                    </aside>
+                </div>
+            </section>
+
+            <section id="deals" class="section">
+                <h3>Deals & Bundles</h3>
+                <div style="display:flex; gap:12px; flex-wrap:wrap">
+                    <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.02); padding:14px; border-radius:12px">
+                        <div style="font-weight:700">GPU + PSU Bundle</div>
+                        <div style="color:var(--muted); margin-top:8px">Select eligible GPUs and get 10% off a modular PSU.</div>
+                        <div style="margin-top:12px"><button class="smallbtn" onclick="location.hash='build'">Bundle Now</button></div>
+                    </div>
+                    <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.02); padding:14px; border-radius:12px">
+                        <div style="font-weight:700">Back-to-School Sale</div>
+                        <div style="color:var(--muted); margin-top:8px">Student discount available with ID verification.</div>
+                        <div style="margin-top:12px"><button class="smallbtn" onclick="alert('Student verification coming soon')">Learn More</button></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="support" class="section">
+                <h3>Support & Warranty</h3>
+                <div style="color:var(--muted); max-width:840px">Every system ships with a minimum 1-year warranty. Optional 3-year and on-site support packages available. For assembly guides, driver downloads, and RMA, visit our support center or contact support@vidyasetu.example (demo email).</div>
+            </section>
+        </main>
+
+        <footer>
+            <div>&copy; <span id="year"></span> VidiyaSetu — All rights reserved</div>
+            <div style="display:flex; gap:10px">
+                <a href="#" style="color:var(--muted); text-decoration:none">Privacy</a>
+                <a href="#" style="color:var(--muted); text-decoration:none">Terms</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Minimal cart & configurator logic for demo
+        const summaryList = document.getElementById('summary-list');
+        const totalEl = document.getElementById('total');
+        const yearEl = document.getElementById('year');
+        yearEl.textContent = new Date().getFullYear();
+
+        function priceOption(selectId){ const sel=document.getElementById(selectId); return Number(sel.value) }
+        function formatUSD(n){ return '$' + n.toLocaleString() }
+
+        function updatePrice(){
+            const items = [
+                {k:'CPU',v:priceOption('cpu') ,n:document.getElementById('cpu').selectedOptions[0].text},
+                {k:'GPU',v:priceOption('gpu') ,n:document.getElementById('gpu').selectedOptions[0].text},
+                {k:'RAM',v:priceOption('ram') ,n:document.getElementById('ram').selectedOptions[0].text},
+                {k:'Storage',v:priceOption('storage') ,n:document.getElementById('storage').selectedOptions[0].text},
+                {k:'Case',v:priceOption('case') ,n:document.getElementById('case').selectedOptions[0].text}
+            ];
+            const subtotal = items.reduce((s,it)=>s+it.v,0);
+            // small assembly fee
+            const assembly = Math.round(subtotal * 0.05);
+            summaryList.innerHTML = items.map(it => `<div style="display:flex;justify-content:space-between"><span>${it.k}: ${it.n}</span><span style="color:var(--muted)">${formatUSD(it.v)}</span></div>`).join('') +
+                `<div style="display:flex;justify-content:space-between;margin-top:8px;color:var(--muted)"><span>Assembly</span><span>${formatUSD(assembly)}</span></div>`;
+            totalEl.textContent = formatUSD(subtotal + assembly);
+            return subtotal + assembly;
+        }
+
+        function resetBuild(){
+            document.getElementById('cpu').selectedIndex=0;
+            document.getElementById('gpu').selectedIndex=0;
+            document.getElementById('ram').selectedIndex=0;
+            document.getElementById('storage').selectedIndex=0;
+            document.getElementById('case').selectedIndex=0;
+            updatePrice();
+        }
+
+        function addToCart(name,price){
+            const cart = JSON.parse(localStorage.getItem('vs_cart')||'[]');
+            cart.push({name,price,added:Date.now()});
+            localStorage.setItem('vs_cart',JSON.stringify(cart));
+            alert(name + ' added to cart — ' + formatUSD(price));
+        }
+
+        function checkout(){
+            const total = updatePrice();
+            const buildName = 'Custom Build';
+            addToCart(buildName, Math.round(total));
+            alert('Custom build added to cart — ' + formatUSD(Math.round(total)));
+        }
+
+        // Initialize
+        updatePrice();
+    </script>
+</body>
+</html></article></aside>
